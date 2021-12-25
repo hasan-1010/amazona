@@ -20,7 +20,6 @@ import NextLink from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import useStyles from '../../utils/styles';
-import CheckoutWizard from '../../components/CheckoutWizard';
 import { useRouter } from 'next/router';
 import { getError } from '../../utils/error';
 import axios from 'axios';
@@ -97,7 +96,6 @@ function Order({ params }) {
 
     return (
         <Layout title={`Order ${orderId}`}>
-            <CheckoutWizard activeStep={3} />
             <Typography component="h1" variant="h1">
                 Order {orderId}
             </Typography>
@@ -238,8 +236,7 @@ function Order({ params }) {
                                                         </TableCell>
                                                         <TableCell align="right">
                                                             <Typography>
-                                                                {item.price}
-                                                                TK
+                                                                {item.price} TK
                                                             </Typography>
                                                         </TableCell>
                                                     </TableRow>
@@ -252,12 +249,11 @@ function Order({ params }) {
                         </Card>
                     </Grid>
                     <Grid item md={3} xs={12}>
-                        <Card>
+                        <Card className={classes.section}>
                             <List>
                                 <ListItem>
                                     <Typography variant="h2">
-                                        {' '}
-                                        Order Summary{' '}
+                                        Order Summary
                                     </Typography>
                                 </ListItem>
                                 <ListItem>
@@ -287,11 +283,13 @@ function Order({ params }) {
                                 <ListItem>
                                     <Grid container>
                                         <Grid item xs={6}>
-                                            <Typography>Total: </Typography>
+                                            <Typography>
+                                                <strong>Total: </strong>
+                                            </Typography>
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Typography align="right">
-                                                {totalPrice} TK
+                                                <strong>{totalPrice} TK</strong>
                                             </Typography>
                                         </Grid>
                                     </Grid>
